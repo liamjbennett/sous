@@ -3,7 +3,6 @@ package core
 import (
 	"os"
 	"strings"
-
 	"github.com/opentable/sous/tools/cli"
 	"github.com/opentable/sous/tools/docker"
 	"github.com/opentable/sous/tools/git"

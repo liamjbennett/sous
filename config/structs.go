@@ -38,6 +38,7 @@ type Env struct {
 type Packs struct {
 	NodeJS *NodeJSConfig
 	Go     *GoConfig
+	Java   *JavaConfig
 }
 
 type NodeJSConfig struct {
@@ -50,6 +51,11 @@ type NodeJSConfig struct {
 type GoConfig struct {
 	AvailableVersions *StackVersions
 	DefaultGoVersion  string
+}
+
+type JavaConfig struct {
+	AvailableVersions *StackVersions
+	DefaultJavaVersion  string
 }
 
 type StackVersions []*StackVersion

@@ -2,6 +2,7 @@ package file
 
 import (
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -103,6 +104,20 @@ func ReadJSON(v interface{}, pathFormat string, a ...interface{}) bool {
 	}
 	if err := json.Unmarshal(b, &v); err != nil {
 		cli.Fatalf("Unable to parse JSON in %s as %T: %s", path, v, err)
+	}
+	if v == nil {
+		cli.Fatalf("Unmarshalled nil")
+	}
+	return true
+}
+
+func ReadXML(v interface{}, pathFormat string, a ...interface{}) bool {
+	b, exists, path := Read(pathFormat, a...)
+	if !exists {
+		return false
+	}
+	if err := xml.Unmarshal(b, &v); err != nil {
+		cli.Fatalf("Unable to parse XML in %s as %T: %s", path, v, err)
 	}
 	if v == nil {
 		cli.Fatalf("Unmarshalled nil")

@@ -12,6 +12,7 @@ func DetectProjectType(packs []Pack) Pack {
 	var pack Pack
 	for _, p := range packs {
 		if err = p.Detect(); err != nil {
+			cli.Logf(err.Error())
 			continue
 		}
 		if pack != nil {
